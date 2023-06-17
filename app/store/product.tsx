@@ -12,7 +12,7 @@ type Product = {
 
 export default function Product({ details }: Product) {
   return (
-    <Link href={`/${details.id}`}>
+    <Link href={`/store/${details.id}`}>
       <Image
         src={details.image}
         alt={details.name}

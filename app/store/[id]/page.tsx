@@ -1,19 +1,20 @@
+import AddProduct from './add';
 import Image from 'next/image';
 import Link from 'next/link';
 
-async function getProduct(id: any) {
+export default async function ProductDetails({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
   const res = await fetch(
     `https://mockup-store-default-rtdb.europe-west1.firebasedatabase.app/mockupDetails/id${id}.json`,
     {
       next: { revalidate: 10 },
     }
   );
-  const data = await res.json();
-  return data;
-}
+  const product: any = await res.json();
 
-export default async function ProductDetails({ params }: any) {
-  const product = await getProduct(params.id);
   return (
     <div>
       <div className="flex items-center pl-16">
@@ -46,6 +47,13 @@ export default async function ProductDetails({ params }: any) {
           <h3 className="mb-6 text-lg text-gray-500">{product.description}</h3>
           <ul>
             <li className="text-lg">+ {product.details.license}</li>
+            <li className="text-lg">
+              {product.details?.ratio && `+ ${product.details?.ratio}`}
+            </li>
+            <li className="text-lg">
+              {product.details?.reflection &&
+                `+ ${product.details?.reflection}`}
+            </li>
             <li className="text-lg">+ {product.details.tool}</li>
             <li className="text-lg">+ {product.details.level}</li>
             <li className="text-lg">+ {product.details.resolution}</li>
@@ -56,12 +64,7 @@ export default async function ProductDetails({ params }: any) {
             <li className="text-lg">+ {product.details.format}</li>
             <li className="text-lg">+ {product.details.manual}</li>
           </ul>
-          <button
-            type="button"
-            className="inline-flex justify-center w-full mt-6 py-3 px-6 text-gray-900 font-semibold border-2 border-solid border-gray-900 hover:bg-gray-950 hover:text-gray-50 transition-all"
-          >
-            Add to cart
-          </button>
+          <AddProduct details={product} />
         </div>
       </div>
     </div>

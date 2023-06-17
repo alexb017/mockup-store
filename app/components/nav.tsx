@@ -3,8 +3,12 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-export default function Nav() {
+export default function Nav(data: any) {
   const pathname = usePathname();
+  const products = data.data?.length;
+
+  console.log(data);
+
   return (
     <nav className="flex items-center justify-between p-16">
       <Link href="/" className="text-xl text-gray-900">
@@ -28,7 +32,7 @@ export default function Nav() {
               pathname === '/cart' ? 'underline' : ''
             }`}
           >
-            Cart (1)
+            Cart {products > 0 && `(${products})`}
           </Link>
         </li>
       </ul>
