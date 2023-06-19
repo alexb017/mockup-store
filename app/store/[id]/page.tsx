@@ -1,6 +1,7 @@
 import AddProduct from './add';
 import Image from 'next/image';
 import Link from 'next/link';
+import RelatedProducts from './related';
 
 export default async function ProductDetails({
   params: { id },
@@ -67,6 +68,8 @@ export default async function ProductDetails({
           <AddProduct details={product} />
         </div>
       </div>
+      <h1 className="ml-16 text-2xl text-gray-900">You might also like</h1>
+      <RelatedProducts details={product} />
     </div>
   );
 }

@@ -7,8 +7,6 @@ export default function Nav(data: any) {
   const pathname = usePathname();
   const products = data.data?.length;
 
-  console.log(data);
-
   return (
     <nav className="flex items-center justify-between p-16">
       <Link href="/" className="text-xl text-gray-900">

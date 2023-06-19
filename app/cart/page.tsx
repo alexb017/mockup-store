@@ -11,10 +11,7 @@ export default async function Cart() {
 
   const products: any[] = Object.values(data);
 
-  const price = products.reduce(
-    (total, product) => total + Number.parseInt(product.price, 10),
-    0
-  );
+  const price = products.reduce((total, product) => total + product.price, 0);
 
   return (
     <div className="p-16">
