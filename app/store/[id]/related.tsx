@@ -9,10 +9,10 @@ export default async function RelatedProducts({ details }: any) {
 
   // Fisher-Yates algorithm
   // shuffle an array randomly
-  for (let i = products.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [products[i], products[j]] = [products[j], products[i]];
-  }
+  // for (let i = products.length - 1; i > 0; i--) {
+  //   const j = Math.floor(Math.random() * (i + 1));
+  //   [products[i], products[j]] = [products[j], products[i]];
+  // }
 
   return (
     <div className="grid grid-cols-2 gap-16 p-16">
