@@ -2,6 +2,8 @@
 
 I've build a mockup-store using react, next.js and tailwind.
 
+![Alt text](/public/Mockup-Store.png)
+
 #### Features
 
 - Fetch products from REST API
